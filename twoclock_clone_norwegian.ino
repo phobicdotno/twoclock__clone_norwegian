@@ -8,10 +8,6 @@
 #include <Time.h>
 #include <TimeLib.h>
 
-#ifndef PSTR
-#define PSTR // Make Arduino Due happy
-#endif
-
 #define PIN 6
 
 // MATRIX DECLARATION:
