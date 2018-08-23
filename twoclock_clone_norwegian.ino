@@ -1,6 +1,6 @@
 
 // TwoClock Clone by phobic.no
-// Version 0.3
+// Version 0.4
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
@@ -54,7 +54,7 @@ const uint16_t colors[] = {
 #define MAGENTA  0xF81F
 #define YELLOW   0xFFE0
 #define WHITE    0xFFFF
-#define RANDOM   RGB_random()
+#define RANDOM   RGB_random() // Generates a random RGB value
 
 
 void setup() {
@@ -63,7 +63,7 @@ void setup() {
   matrix.setBrightness(100);
   matrix.setTextColor(colors[0]);
   Serial.begin(9600);      // open the serial port at 9600 bps:
-  setTime(23, 05, 0, 21, 8, 18);
+  setTime(00, 10, 0, 23, 8, 18);
 }
 
 int x    = matrix.width();
@@ -79,7 +79,7 @@ void loop() {
   Serial.println(second());
 */
 
-delay(1000);
+delay(60000);
   matrix.fillScreen(0);
   minutes();
   hours();
@@ -119,6 +119,8 @@ void over_() {
   matrix.drawFastHLine(3, 2, 4, RANDOM);
 }
 
+// NUMBERS
+
 void ett() {
   matrix.drawFastHLine(5, 6, 3, RANDOM);
 }
@@ -154,12 +156,6 @@ void elleve() {
 }
 void tolv() {
   matrix.drawFastHLine(0, 5, 4, RANDOM);
-}
-void l_dot() {
-  matrix.drawFastHLine(0, 7, 1, RANDOM);
-}
-void r_dot() {
-  matrix.drawFastHLine(7, 7, 1, RANDOM);
 }
 
 // MINUTES
@@ -229,9 +225,8 @@ void hours() {
   if (hourFormat12() == 10) { if (minute() < 30 ) { ti(); }  else { elleve(); }}
   if (hourFormat12() == 11) { if (minute() < 30 ) { elleve(); }  else { tolv(); }}
   if (hourFormat12() == 12) { if (minute() < 30 ) { tolv(); }  else { ett(); }}
-
-
 }
+
 // void drawPixel(uint16_t x, uint16_t y, uint16_t color);
 // void drawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color);
 // For horizontal or vertical lines, there are optimized line-drawing
@@ -264,6 +259,4 @@ void test_words() {
   ti();   matrix.show(); delay(d1); matrix.fillScreen(0);
   elleve();   matrix.show(); delay(d1); matrix.fillScreen(0);
   tolv();   matrix.show(); delay(d1); matrix.fillScreen(0);
-  l_dot();   matrix.show(); delay(d1); matrix.fillScreen(0);
-  r_dot();   matrix.show(); delay(d1); matrix.fillScreen(0);
 }
