@@ -1,16 +1,11 @@
-
-
-// TwoClock Clone by phobic.no
-// Version 0.4
+// TwoClock Clone Norwegian by phobic.no
+// Version 0.5
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
 #include "randomhat.h"    // Generate random numbers
-#include "RTC.h"    // Set the time
-
-
-
+#include "RTC.h"    // Set the time to DS3231
 
 #define PIN 3  // Pin for data to Matrix LED
 
@@ -44,7 +39,7 @@ const uint16_t colors[] = {
   matrix.Color(255, 0, 0), matrix.Color(0, 255, 0), matrix.Color(0, 0, 255)
 };
 
-// Color definitions
+// Color definitions (not needed here)
 #define BLACK    0x0000
 #define BLUE     0x001F
 #define RED      0xF800
@@ -54,7 +49,6 @@ const uint16_t colors[] = {
 #define YELLOW   0xFFE0
 #define WHITE    0xFFFF
 #define RANDOM   RGB_random() // Generates a random RGB value
-
 
 void setup() {
   setTimeDS3231();  // Only need to run this the first time
@@ -69,7 +63,6 @@ int x    = matrix.width();
 int pass = 0;
 int d1 = 500;
 
-
 void loop() {
   DateTime now = rtc.now();
     Serial.print(now.hour(), DEC);
@@ -78,7 +71,6 @@ void loop() {
     Serial.print(':');
     Serial.print(now.second(), DEC);
     Serial.println();
-
 
   matrix.fillScreen(0);
   minutes();
@@ -238,19 +230,6 @@ void hours() {
   if (hours == 11) { if (minutes < 17 ) { elleve(); }  else { tolv(); }}
   if (hours == 12) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
 }
-
-// void drawPixel(uint16_t x, uint16_t y, uint16_t color);
-// void drawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color);
-// For horizontal or vertical lines, there are optimized line-drawing
-// functions that avoid the angular calculations:
-// void drawFastVLine(uint16_t x0, uint16_t y0, uint16_t length, uint16_t color);
-// void drawFastHLine(uint8_t x0, uint8_t y0, uint8_t length, uint16_t color);
-
-// void drawRect(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color);
-// void fillRect(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color);
-
-//void drawCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color);
-//void fillCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color);
 
 void test_words() {
   fem_();  matrix.show(); delay(d1); matrix.fillScreen(0);
