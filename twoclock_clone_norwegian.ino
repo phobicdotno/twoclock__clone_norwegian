@@ -1,19 +1,18 @@
 
+
 // TwoClock Clone by phobic.no
 // Version 0.4
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
-#include <Time.h>
-#include <TimeLib.h>
-#include "randomhat.h"
+#include "randomhat.h"    // Generate random numbers
+#include "RTC.h"    // Set the time
 
-#ifndef PSTR
-#define PSTR // Make Arduino Due happy
-#endif
 
-#define PIN 6
+
+
+#define PIN 3  // Pin for data to Matrix LED
 
 // MATRIX DECLARATION:
 // Parameter 1 = width of NeoPixel matrix
@@ -58,12 +57,12 @@ const uint16_t colors[] = {
 
 
 void setup() {
+  setTimeDS3231();  // Only need to run this the first time
   matrix.begin();
   matrix.setTextWrap(false);
   matrix.setBrightness(100);
   matrix.setTextColor(colors[0]);
   Serial.begin(9600);      // open the serial port at 9600 bps:
-  setTime(00, 10, 0, 23, 8, 18);
 }
 
 int x    = matrix.width();
@@ -72,19 +71,22 @@ int d1 = 500;
 
 
 void loop() {
-/*  Serial.print(hour());
-  Serial.print(":");
-  Serial.print(minute());
-  Serial.print(":");
-  Serial.println(second());
-*/
+  DateTime now = rtc.now();
+    Serial.print(now.hour(), DEC);
+    Serial.print(':');
+    Serial.print(now.minute(), DEC);
+    Serial.print(':');
+    Serial.print(now.second(), DEC);
+    Serial.println();
 
-delay(60000);
+
   matrix.fillScreen(0);
   minutes();
   hours();
 //  phobic();
   matrix.show();
+  delay(5000);
+
 } // loop
 
 uint16_t RGB_random(){
@@ -161,70 +163,72 @@ void tolv() {
 // MINUTES
 
 void minutes() {
-  if (minute() > 3 && minute() <= 7) {
+  DateTime now = rtc.now();
+  if (now.minute() > 3 && now.minute() <= 7) {
     fem_(); over_();   Serial.println("Ca fem over");
     }
 
-  if (minute() > 7 && minute() <= 13) {
+  if (now.minute() > 7 && now.minute() <= 13) {
     ti_(); over_();   Serial.println("Ca ti over");
     }
 
-  if (minute() > 13 && minute() <= 18) {
+  if (now.minute() > 13 && now.minute() <= 18) {
     kvart_(); over_();   Serial.println("Ca kvart over");
     }
 
-  if (minute() > 18 && minute() <= 23) {
+  if (now.minute() > 18 && now.minute() <= 23) {
     ti_(); pa_(); halv_();  Serial.println("Ca ti på halv");
     }
 
-  if (minute() > 23 && minute() <= 28) {
+  if (now.minute() > 23 && now.minute() <= 28) {
     fem_(); pa_(); halv_();  Serial.println("Ca 5 på halv");
     }
 
-  if (minute() > 28 && minute() <= 33) {
+  if (now.minute() > 28 && now.minute() <= 33) {
     halv_();   Serial.println("Ca halv");
     }
 
-  if (minute() > 33 && minute() <= 38) {
+  if (now.minute() > 33 && now.minute() <= 38) {
     fem_(); over_(); halv_();  Serial.println("Ca fem over halv");
     }
 
-  if (minute() > 38 && minute() <= 43) {
+  if (now.minute() > 38 && now.minute() <= 43) {
     ti_(); over_(); halv_();  Serial.println("Ca ti over halv");
     }
 
-  if (minute() > 43 && minute() <= 48) {
+  if (now.minute() > 43 && now.minute() <= 48) {
     kvart_(); pa_();  Serial.println("Ca kvart på");
     }
 
-  if (minute() > 48 && minute() <= 53) {
-    ti_(); pa_();  Serial.println("Ca kvart på");
+  if (now.minute() > 48 && now.minute() <= 53) {
+    ti_(); pa_();  Serial.println("Ca ti på");
     }
 
-  if (minute() > 53 && minute() <= 58) {
+  if (now.minute() > 53 && now.minute() <= 58) {
     fem_(); pa_();  Serial.println("Ca fem på");
     }
 }
 void hours() {
-  if (hourFormat12() == 1) {
-    if (minute() < 30 ) {
+  DateTime now = rtc.now();
+  if (now.hour() == 1) {
+    if (now.minute() < 30 ) {
       ett();//   Serial.println("Mindre enn tretti");
     }
     else {
       to();//  Serial.println("Mer enn tretti");
     }
   } // if
-  if (hourFormat12() == 2) { if (minute() < 30 ) { to(); }  else { tre(); }}
-  if (hourFormat12() == 3) { if (minute() < 30 ) { tre(); }  else { fire(); }}
-  if (hourFormat12() == 4) { if (minute() < 30 ) { fire(); }  else { fem(); }}
-  if (hourFormat12() == 5) { if (minute() < 30 ) { fem(); }  else { seks(); }}
-  if (hourFormat12() == 6) { if (minute() < 30 ) { seks(); }  else { sju(); }}
-  if (hourFormat12() == 7) { if (minute() < 30 ) { sju(); }  else { atte(); }}
-  if (hourFormat12() == 8) { if (minute() < 30 ) { atte(); }  else { ni(); }}
-  if (hourFormat12() == 9) { if (minute() < 30 ) { ni(); }  else { ti(); }}
-  if (hourFormat12() == 10) { if (minute() < 30 ) { ti(); }  else { elleve(); }}
-  if (hourFormat12() == 11) { if (minute() < 30 ) { elleve(); }  else { tolv(); }}
-  if (hourFormat12() == 12) { if (minute() < 30 ) { tolv(); }  else { ett(); }}
+  if (now.hour() == 2) { if (now.minute() < 30 ) { to(); }  else { tre(); }}
+  if (now.hour() == 3) { if (now.minute() < 30 ) { tre(); }  else { fire(); }}
+  if (now.hour() == 4) { if (now.minute() < 30 ) { fire(); }  else { fem(); }}
+  if (now.hour() == 5) { if (now.minute() < 30 ) { fem(); }  else { seks(); }}
+  if (now.hour() == 6) { if (now.minute() < 30 ) { seks(); }  else { sju(); }}
+  if (now.hour() == 7) { if (now.minute() < 30 ) { sju(); }  else { atte(); }}
+  if (now.hour() == 8) { if (now.minute() < 30 ) { atte(); }  else { ni(); }}
+  if (now.hour() == 9) { if (now.minute() < 30 ) { ni(); }  else { ti(); }}
+  if (now.hour() == 10) { if (now.minute() < 30 ) { ti(); }  else { elleve(); }}
+  if (now.hour() == 11) { if (now.minute() < 30 ) { elleve(); }  else { tolv(); }}
+  if (now.hour() == 12) { if (now.minute() < 30 ) { tolv(); }  else { ett(); }}
 }
 
 // void drawPixel(uint16_t x, uint16_t y, uint16_t color);
