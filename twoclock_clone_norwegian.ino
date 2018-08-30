@@ -60,7 +60,7 @@ void setup() {
   setTimeDS3231();  // Only need to run this the first time
   matrix.begin();
   matrix.setTextWrap(false);
-  matrix.setBrightness(100);
+  matrix.setBrightness(200);
   matrix.setTextColor(colors[0]);
   Serial.begin(9600);      // open the serial port at 9600 bps:
 }
@@ -84,8 +84,9 @@ void loop() {
   minutes();
   hours();
 //  phobic();
+//  test_words();
   matrix.show();
-  delay(5000);
+  delay(60000);
 
 } // loop
 
@@ -164,71 +165,78 @@ void tolv() {
 
 void minutes() {
   DateTime now = rtc.now();
-  if (now.minute() > 3 && now.minute() <= 7) {
+  int minutes = now.minute();
+  if (minutes > 3 && minutes <= 7) {
     fem_(); over_();   Serial.println("Ca fem over");
     }
 
-  if (now.minute() > 7 && now.minute() <= 13) {
+  if (minutes > 7 && minutes <= 13) {
     ti_(); over_();   Serial.println("Ca ti over");
     }
 
-  if (now.minute() > 13 && now.minute() <= 18) {
+  if (minutes > 13 && minutes <= 18) {
     kvart_(); over_();   Serial.println("Ca kvart over");
     }
 
-  if (now.minute() > 18 && now.minute() <= 23) {
+  if (minutes > 18 && minutes <= 23) {
     ti_(); pa_(); halv_();  Serial.println("Ca ti på halv");
     }
 
-  if (now.minute() > 23 && now.minute() <= 28) {
+  if (minutes > 23 && minutes <= 28) {
     fem_(); pa_(); halv_();  Serial.println("Ca 5 på halv");
     }
 
-  if (now.minute() > 28 && now.minute() <= 33) {
+  if (minutes > 28 && minutes <= 33) {
     halv_();   Serial.println("Ca halv");
     }
 
-  if (now.minute() > 33 && now.minute() <= 38) {
+  if (minutes > 33 && minutes <= 38) {
     fem_(); over_(); halv_();  Serial.println("Ca fem over halv");
     }
 
-  if (now.minute() > 38 && now.minute() <= 43) {
+  if (minutes > 38 && minutes <= 43) {
     ti_(); over_(); halv_();  Serial.println("Ca ti over halv");
     }
 
-  if (now.minute() > 43 && now.minute() <= 48) {
+  if (minutes > 43 && minutes <= 48) {
     kvart_(); pa_();  Serial.println("Ca kvart på");
     }
 
-  if (now.minute() > 48 && now.minute() <= 53) {
+  if (minutes > 48 && minutes <= 53) {
     ti_(); pa_();  Serial.println("Ca ti på");
     }
 
-  if (now.minute() > 53 && now.minute() <= 58) {
+  if (minutes > 53 && minutes <= 58) {
     fem_(); pa_();  Serial.println("Ca fem på");
     }
 }
 void hours() {
   DateTime now = rtc.now();
-  if (now.hour() == 1) {
-    if (now.minute() < 30 ) {
+  int hours = now.hour();
+  int minutes = now.minute();
+  if (hours > 13)       // Change 24-hour system to 12-hours 
+  {
+    hours = hours-12;
+  }
+  if (hours == 1) {
+    if (minutes < 30 ) {
       ett();//   Serial.println("Mindre enn tretti");
     }
     else {
       to();//  Serial.println("Mer enn tretti");
     }
   } // if
-  if (now.hour() == 2) { if (now.minute() < 30 ) { to(); }  else { tre(); }}
-  if (now.hour() == 3) { if (now.minute() < 30 ) { tre(); }  else { fire(); }}
-  if (now.hour() == 4) { if (now.minute() < 30 ) { fire(); }  else { fem(); }}
-  if (now.hour() == 5) { if (now.minute() < 30 ) { fem(); }  else { seks(); }}
-  if (now.hour() == 6) { if (now.minute() < 30 ) { seks(); }  else { sju(); }}
-  if (now.hour() == 7) { if (now.minute() < 30 ) { sju(); }  else { atte(); }}
-  if (now.hour() == 8) { if (now.minute() < 30 ) { atte(); }  else { ni(); }}
-  if (now.hour() == 9) { if (now.minute() < 30 ) { ni(); }  else { ti(); }}
-  if (now.hour() == 10) { if (now.minute() < 30 ) { ti(); }  else { elleve(); }}
-  if (now.hour() == 11) { if (now.minute() < 30 ) { elleve(); }  else { tolv(); }}
-  if (now.hour() == 12) { if (now.minute() < 30 ) { tolv(); }  else { ett(); }}
+  if (hours == 2) { if (minutes < 17 ) { to(); }  else { tre(); }}
+  if (hours == 3) { if (minutes < 17 ) { tre(); }  else { fire(); }}
+  if (hours == 4) { if (minutes < 17 ) { fire(); }  else { fem(); }}
+  if (hours == 5) { if (minutes < 17 ) { fem(); }  else { seks(); }}
+  if (hours == 6) { if (minutes < 17 ) { seks(); }  else { sju(); }}
+  if (hours == 7) { if (minutes < 17 ) { sju(); }  else { atte(); }}
+  if (hours == 8) { if (minutes < 17 ) { atte(); }  else { ni(); }}
+  if (hours == 9) { if (minutes < 17 ) { ni(); }  else { ti(); }}
+  if (hours == 10) { if (minutes < 17 ) { ti(); }  else { elleve(); }}
+  if (hours == 11) { if (minutes < 17 ) { elleve(); }  else { tolv(); }}
+  if (hours == 12) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
 }
 
 // void drawPixel(uint16_t x, uint16_t y, uint16_t color);
@@ -248,7 +256,7 @@ void test_words() {
   fem_();  matrix.show(); delay(d1); matrix.fillScreen(0);
   ti_();  matrix.show(); delay(d1);  matrix.fillScreen(0);
   kvart_();  matrix.show(); delay(d1); matrix.fillScreen(0);
-  halv_();  matrix.show(); delay(d1); matrix.fillScreen(0);  // MANGLER TEKST!
+  halv_();  matrix.show(); delay(d1); matrix.fillScreen(0);
   pa_();  matrix.show(); delay(d1); matrix.fillScreen(0);
   over_();   matrix.show(); delay(d1); matrix.fillScreen(0);
   ett();   matrix.show(); delay(d1); matrix.fillScreen(0);
