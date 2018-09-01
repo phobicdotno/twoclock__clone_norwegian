@@ -68,6 +68,7 @@ void loop() {
   matrix.fillScreen(0);
   int hours = now.hour();
   int minutes = now.minute();
+
   Minutes(minutes);
   Hours(minutes, hours);
 /*
@@ -228,12 +229,12 @@ void Minutes(int minutes) {
     }
 }
 void Hours(int minutes, int hours) {
-  if (hours > 13)       // Change 24-hour system to 12-hours 
+  if (hours > 12)       // Change 24-hour system to 12-hours 
   {
     hours = hours-12;
   }
   if (hours == 1) {
-    if (minutes < 30 ) {
+  if (minutes < 17 ) {
       ett();//   Serial.println("Mindre enn tretti");
     }
     else {
