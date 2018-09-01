@@ -234,7 +234,7 @@ void Hours(int minutes, int hours) {
     hours = hours-12;
   }
   if (hours == 1) {
-  if (minutes < 17 ) {
+      if (minutes < 17 ) {
       ett();//   Serial.println("Mindre enn tretti");
     }
     else {
