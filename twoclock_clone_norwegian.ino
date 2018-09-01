@@ -1,5 +1,5 @@
 // TwoClock Clone Norwegian by phobic.no
-// Version 0.5
+// Version 0.6
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
@@ -65,22 +65,49 @@ int d1 = 500;
 
 void loop() {
   DateTime now = rtc.now();
+  matrix.fillScreen(0);
+  int hours = now.hour();
+  int minutes = now.minute();
+  Minutes(minutes);
+  Hours(minutes, hours);
+/*
+// DEBUG: Serial output for current time
     Serial.print(now.hour(), DEC);
     Serial.print(':');
     Serial.print(now.minute(), DEC);
     Serial.print(':');
     Serial.print(now.second(), DEC);
     Serial.println();
+*/
+/*
+// DEBUG: Loop fast through 12 hours cycle
+    for (int j = 1 ; j < 13; j++){
+     for (int i = 1 ; i < 60; i+=5){
+       matrix.fillScreen(0);
+       delay(1000);
+       Hours(i, j);
+       Minutes(i);
+      Serial.print(j);
+      Serial.print(":");
+      Serial.println(i);
 
-  matrix.fillScreen(0);
-  minutes();
-  hours();
+       matrix.show();
+     }
+    }
+*/
 //  phobic();
 //  test_words();
   matrix.show();
   delay(60000);
 
 } // loop
+
+void cycleTimeTest() {
+  // Loop debug should be here. 
+  // Need to find out how to reach
+  // Hours/Minutes functions from 
+  // inside this function
+  }
 
 uint16_t RGB_random(){
   int randR = randomHat();
@@ -155,9 +182,7 @@ void tolv() {
 
 // MINUTES
 
-void minutes() {
-  DateTime now = rtc.now();
-  int minutes = now.minute();
+void Minutes(int minutes) {
   if (minutes > 3 && minutes <= 7) {
     fem_(); over_();   Serial.println("Ca fem over");
     }
@@ -202,10 +227,7 @@ void minutes() {
     fem_(); pa_();  Serial.println("Ca fem på");
     }
 }
-void hours() {
-  DateTime now = rtc.now();
-  int hours = now.hour();
-  int minutes = now.minute();
+void Hours(int minutes, int hours) {
   if (hours > 13)       // Change 24-hour system to 12-hours 
   {
     hours = hours-12;
