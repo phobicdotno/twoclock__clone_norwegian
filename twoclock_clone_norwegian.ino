@@ -7,7 +7,7 @@
 #include "randomhat.h"    // Generate random numbers
 #include "RTC.h"    // Set the time to DS3231
 
-#define PIN 3  // Pin for data to Matrix LED
+#define PIN 13  // Pin for data to Matrix LED
 
 // MATRIX DECLARATION:
 // Parameter 1 = width of NeoPixel matrix
@@ -252,6 +252,7 @@ void Hours(int minutes, int hours) {
   if (hours == 10) { if (minutes < 17 ) { ti(); }  else { elleve(); }}
   if (hours == 11) { if (minutes < 17 ) { elleve(); }  else { tolv(); }}
   if (hours == 12) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
+  if (hours == 0) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
 }
 
 void test_words() {

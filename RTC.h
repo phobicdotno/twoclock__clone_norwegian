@@ -10,6 +10,7 @@ void setTimeDS3231(){
     Serial.println("Couldn't find RTC");
     while (1);
   }
+  //else {rtc.adjust(DateTime(2018, 9, 9, 1, 32, 0));}
 
   if (rtc.lostPower()) {    // Power cycle the arduino for this to kick in
     Serial.println("RTC lost power, lets set the time!");
