@@ -252,7 +252,7 @@ void Hours(int minutes, int hours) {
   if (hours == 10) { if (minutes < 17 ) { ti(); }  else { elleve(); }}
   if (hours == 11) { if (minutes < 17 ) { elleve(); }  else { tolv(); }}
   if (hours == 12) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
-  if (hours == 0) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
+  if (hours == 0) { if (minutes < 17 ) { ett(); }  else { to(); }}
 }
 
 void test_words() {
