@@ -14,11 +14,11 @@ void Minutes(int minutes) {
     }
 
   if (minutes > 18 && minutes <= 23) {
-    ti_(); pa_(); halv_();  Serial.println("Ca ti på halv");
+    ti_(); paa_(); halv_();  Serial.println("Ca ti på halv");
     }
 
   if (minutes > 23 && minutes <= 28) {
-    fem_(); pa_(); halv_();  Serial.println("Ca 5 på halv");
+    fem_(); paa_(); halv_();  Serial.println("Ca 5 på halv");
     }
 
   if (minutes > 28 && minutes <= 33) {
@@ -34,14 +34,14 @@ void Minutes(int minutes) {
     }
 
   if (minutes > 43 && minutes <= 48) {
-    kvart_(); pa_();  Serial.println("Ca kvart på");
+    kvart_(); paa_();  Serial.println("Ca kvart på");
     }
 
   if (minutes > 48 && minutes <= 53) {
-    ti_(); pa_();  Serial.println("Ca ti på");
+    ti_(); paa_();  Serial.println("Ca ti på");
     }
 
   if (minutes > 53 && minutes <= 58) {
-    fem_(); pa_();  Serial.println("Ca fem på");
+    fem_(); paa_();  Serial.println("Ca fem på");
     }
 }
