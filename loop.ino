@@ -10,10 +10,12 @@ void loop() {
     Serial.print(":");
     Serial.println(minutes);
   
-    Minutes(minutes);
-    Hours(minutes, hours);
+//    Minutes(minutes);
+//    Hours(minutes, hours);
   
+ //phobic();
   
-    delay(5000);
-//  testText();
+  testText();
+//paa_();
+    delay(500);
 } // loop

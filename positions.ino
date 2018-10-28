@@ -16,31 +16,27 @@ void over_(){
     matrix_SK6812.show();  }
 
 void kvart_(){
-  for(int i = 10; i < 20; i++){
+  for(int i = 12; i < 22; i++){
     matrix_SK6812.setPixelColor(i, 0, 0, 255);  }
     matrix_SK6812.show();  }
 
 void ti_(){
-  for(int i = 32; i < 36; i++){
+  for(int i = 34; i < 38; i++){
     matrix_SK6812.setPixelColor(i, 0, 0, 255);  }
     matrix_SK6812.show();  }
 
 void fem_(){
-  for(int i = 36; i < 42; i++){
+  for(int i = 38; i < 44; i++){
     matrix_SK6812.setPixelColor(i, 0, 0, 255);  }
     matrix_SK6812.show();  }
 
-// *Å - mangler P fra Arduino #2
 void paa_() {
   cls();
-  for (int i = 88; i < 90; i++) {
-    matrix_ws2812b.setPixelColor(i, 1, 1, 1);
-  }
-  for (int i = 6; i < 7; i++) {
+  for (int i = 8; i < 12; i++) {
     matrix_SK6812.setPixelColor(i, 0, 0, 255);
   }
   matrix_SK6812.show();   // P
-  matrix_ws2812b.show();  // Å
+
 }
 
 void dot1() {
@@ -72,7 +68,7 @@ void dot4() {
 }
 
 void phobic() {
-  for (int i = 20; i < 32; i++) {
+  for (int i = 22; i < 34; i++) {
     matrix_SK6812.setPixelColor(i, 0, 0, 255);
   }
   matrix_SK6812.show();
