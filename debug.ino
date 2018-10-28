@@ -29,7 +29,31 @@ void cycleTimeTest() {
   // Need to find out how to reach
   // Hours/Minutes functions from 
   // inside this function
+  minutes = 0;
+  hours = 0;
+  delay(500);
+  Serial.print(hours);
+  Serial.print(":");
+  Serial.println(minutes);
+  
+  for (int i=0; i<12; i++){
+    delay(1000);
+    for (int j=0; j<11; j++){
+      cls();
+      Minutes(minutes);
+      Hours(minutes, hours);
+      delay(1000);
+      Serial.print(hours);
+      Serial.print(":");
+      Serial.println(minutes);
+      minutes+=5;
+    }
+    hours++;
+    minutes = 0;
+    
   }
+}
+  
 
 void cls() {
   matrix_ws2812b.clear();

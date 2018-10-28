@@ -44,7 +44,7 @@ const uint16_t colors[] = {
 
 void setup() {
   setTimeDS3231();  // Only need to run this the first time
-//  rtc.adjust(DateTime(2018, 25, 10, 23, 40, 0));
+//  rtc.adjust(DateTime(2018, 10, 28, 21, 49, 0));
   Serial.begin(9600);
   matrix_ws2812b.begin();
   matrix_ws2812b.setBrightness(255);  // 0-255
