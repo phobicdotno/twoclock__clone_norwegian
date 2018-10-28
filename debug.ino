@@ -42,6 +42,9 @@ void cycleTimeTest() {
       cls();
       Minutes(minutes);
       Hours(minutes, hours);
+      matrix_ws2812b.show();
+      matrix_SK6812.show();
+      
       delay(1000);
       Serial.print(hours);
       Serial.print(":");
@@ -57,97 +60,127 @@ void cycleTimeTest() {
 
 void cls() {
   matrix_ws2812b.clear();
-  matrix_ws2812b.show();
   matrix_SK6812.clear();
-  matrix_SK6812.show();  
+}
+
+void showBoth(){
+  matrix_ws2812b.show();
+  matrix_SK6812.show();
 }
 
 void testText() {
+  phobic();
+  showBoth();
+  delay(2000);
+  cls();
+
   ett();
+  showBoth();
   delay(delayTime);
   cls();;
 
   to();
+  showBoth();
   delay(delayTime);
   cls();;
 
   tre();  // Mangler E
+  showBoth();
   delay(delayTime);
   cls();;
 
   fire();
+  showBoth();
   delay(delayTime);
   cls();
 
   fem();
+  showBoth();
   delay(delayTime);
   cls();
 
   seks();
+  showBoth();
   delay(delayTime);
   cls();
 
   sju();
+  showBoth();
   delay(delayTime);
   cls();
 
   aatte();
+  showBoth();
   delay(delayTime);
   cls();
 
   ni();
+  showBoth();
   delay(delayTime);
   cls();
 
   ti();
+  showBoth();
   delay(delayTime);
   cls();
 
   elleve(); // Mangler første E
+  showBoth();
   delay(delayTime);
   cls();
 
   tolv();
+  showBoth();
   delay(delayTime);
   cls();
 
   fem_();
+  showBoth();
   delay(delayTime);
   cls();
 
   ti_();
+  showBoth();
   delay(delayTime);
   cls();
 
   kvart_();
-  delay(delayTime);
-  cls();
-
-  halv_();
-  delay(delayTime);
-  cls();
-
-  over_();
+  showBoth();
   delay(delayTime);
   cls();
 
   paa_();
+  showBoth();
+  delay(delayTime);
+  cls();
+
+  over_();
+  showBoth();
+  delay(delayTime);
+  cls();
+
+  halv_();
+  showBoth();
   delay(delayTime);
   cls();
 
   dot1();
+  showBoth();
   delay(delayTime);
   cls();
 
   dot2();
+  showBoth();
   delay(delayTime);
   cls();
 
   dot3();
+  showBoth();
   delay(delayTime);
   cls();
 
   dot4();
+  showBoth();
   delay(delayTime);
   cls();
 }

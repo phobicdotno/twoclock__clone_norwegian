@@ -15,8 +15,7 @@ void loop() {
   
  //phobic();
   
-  cycleTimeTest();
+ // cycleTimeTest();
   testText();
-//paa_();
-    delay(500);
+  delay(500);
 } // loop

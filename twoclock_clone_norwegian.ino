@@ -40,7 +40,8 @@ const uint16_t colors[] = {
 #define MAGENTA  0xF81F
 #define YELLOW   0xFFE0
 #define WHITE    0xFFFF
-#define RANDOM   RGB_random() // Generates a random RGB value
+#define RANDOM   RGB_RANDOM() // Generates a RANDOM RGB value
+#define RANDOMW  RGBW_RANDOM() // Generates a RANDOM RGBW value
 
 void setup() {
   setTimeDS3231();  // Only need to run this the first time
@@ -49,12 +50,12 @@ void setup() {
   matrix_ws2812b.begin();
   matrix_ws2812b.setBrightness(255);  // 0-255
   matrix_ws2812b.clear();
-  matrix_ws2812b.show(); // Initialize all pixels to 'off'
+   // Initialize all pixels to 'off'
   
   matrix_SK6812.begin();
   matrix_SK6812.setBrightness(255);  // 0-255
   matrix_SK6812.clear();
-  matrix_SK6812.show(); // Initialize all pixels to 'off'
+   // Initialize all pixels to 'off'
 }
 
 int pass = 0;
@@ -68,9 +69,17 @@ int minutes;
 int delayTime = 1000;
 
 
-uint16_t RGB_random(){
+uint16_t RGB_RANDOM(){
   int randR = randomHat();
   int randG = randomHat();
   int randB = randomHat();
   return matrix_ws2812b.Color(randR, randG, randB);
+  }
+
+uint16_t RGBW_RANDOM(){
+  int randR = randomHat();
+  int randG = randomHat();
+  int randB = randomHat();
+  int randW = 0;
+  return matrix_SK6812.Color(randR, randG, randB, randW);
   }
