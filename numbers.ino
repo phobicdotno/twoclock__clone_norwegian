@@ -1,5 +1,5 @@
 
-void ett() {
+void ett(int G, int R, int B) {
   for (int i = 14; i < 20; i++) {
     matrix_ws2812b.setPixelColor(i, 255, 255, 255);
   }

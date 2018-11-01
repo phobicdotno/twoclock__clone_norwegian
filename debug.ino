@@ -24,28 +24,23 @@
     }
 */
 
-void cycleTimeTest() {
-  // Loop debug should be here. 
-  // Need to find out how to reach
-  // Hours/Minutes functions from 
-  // inside this function
+void cycleTimeTest(int delayTime) {
   minutes = 0;
   hours = 0;
-  delay(500);
+  delay(delayTime);
   Serial.print(hours);
   Serial.print(":");
   Serial.println(minutes);
   
   for (int i=0; i<12; i++){
-    delay(1000);
-    for (int j=0; j<11; j++){
+    for (int j=0; j<12; j++){
       cls();
       Minutes(minutes);
       Hours(minutes, hours);
       matrix_ws2812b.show();
       matrix_SK6812.show();
       
-      delay(1000);
+      delay(delayTime);
       Serial.print(hours);
       Serial.print(":");
       Serial.println(minutes);
@@ -58,15 +53,6 @@ void cycleTimeTest() {
 }
   
 
-void cls() {
-  matrix_ws2812b.clear();
-  matrix_SK6812.clear();
-}
-
-void showBoth(){
-  matrix_ws2812b.show();
-  matrix_SK6812.show();
-}
 
 void testText() {
   phobic();
@@ -74,7 +60,7 @@ void testText() {
   delay(2000);
   cls();
 
-  ett();
+  ett(100,100,100);
   showBoth();
   delay(delayTime);
   cls();;

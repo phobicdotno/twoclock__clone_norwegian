@@ -5,7 +5,7 @@ void Hours(int minutes, int hours) {
   }
   if (hours == 1) {
       if (minutes < 17 ) {
-      ett();//   Serial.println("Mindre enn tretti");
+      ett(100,100,100);//   Serial.println("Mindre enn tretti");
     }
     else {
       to();//  Serial.println("Mer enn tretti");
@@ -21,6 +21,5 @@ void Hours(int minutes, int hours) {
   if (hours == 9) { if (minutes < 17 ) { ni(); }  else { ti(); }}
   if (hours == 10) { if (minutes < 17 ) { ti(); }  else { elleve(); }}
   if (hours == 11) { if (minutes < 17 ) { elleve(); }  else { tolv(); }}
-  if (hours == 12) { if (minutes < 17 ) { tolv(); }  else { ett(); }}
-  if (hours == 0) { if (minutes < 17 ) { ett(); }  else { to(); }}
+  if (hours == 12 || hours == 0) { if (minutes < 17 ) { tolv(); }  else { ett(100,100,100); }}
 }

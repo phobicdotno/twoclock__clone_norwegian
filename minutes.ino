@@ -1,6 +1,10 @@
 // MINUTES
 
 void Minutes(int minutes) {
+  if (minutes == 59 || minutes == 0 || minutes == 1 || minutes == 2) {
+    Serial.println("Hel");
+    }
+
   if (minutes > 3 && minutes <= 7) {
     fem_(); over_();   Serial.println("Ca fem over");
     }
