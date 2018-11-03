@@ -33,10 +33,11 @@ void cycleTimeTest(int delayTime) {
   Serial.println(minutes);
   
   for (int i=0; i<12; i++){
+    tempColor = RGB_RANDOM();
     for (int j=0; j<12; j++){
       cls();
-      Minutes(minutes);
-      Hours(minutes, hours);
+      Minutes(minutes, tempColor);
+      Hours(minutes, hours, tempColor);
       matrix_ws2812b.show();
       matrix_SK6812.show();
       
@@ -55,117 +56,117 @@ void cycleTimeTest(int delayTime) {
 
 
 void testText() {
-  phobic();
+  phobic(tempColor);
   showBoth();
   delay(2000);
   cls();
 
-  ett(100,100,100);
+  ett(tempColor);
   showBoth();
   delay(delayTime);
   cls();;
 
-  to();
+  to(tempColor);
   showBoth();
   delay(delayTime);
   cls();;
 
-  tre();  // Mangler E
+  tre(tempColor);  // Mangler E
   showBoth();
   delay(delayTime);
   cls();;
 
-  fire();
+  fire(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  fem();
+  fem(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  seks();
+  seks(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  sju();
+  sju(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  aatte();
+  aatte(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  ni();
+  ni(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  ti();
+  ti(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  elleve(); // Mangler første E
+  elleve(tempColor); // Mangler første E
   showBoth();
   delay(delayTime);
   cls();
 
-  tolv();
+  tolv(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  fem_();
+  fem_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  ti_();
+  ti_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  kvart_();
+  kvart_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  paa_();
+  paa_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  over_();
+  over_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  halv_();
+  halv_(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot1();
+  dot1(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot2();
+  dot2(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot3();
+  dot3(tempColor);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot4();
+  dot4(tempColor);
   showBoth();
   delay(delayTime);
   cls();

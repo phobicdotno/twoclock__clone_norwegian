@@ -27,9 +27,25 @@ Adafruit_NeoPixel matrix_SK6812  = Adafruit_NeoPixel(90, PIN_SK6812, NEO_GRB + N
 // and minimize distance between Arduino and first pixel.  Avoid connecting
 // on a live circuit...if you must, connect GND first.
 
-const uint16_t colors[] = {
-  matrix_ws2812b.Color(255, 0, 0), matrix_ws2812b.Color(0, 255, 0), matrix_ws2812b.Color(0, 0, 255)
-};
+
+int pass = 0;
+int d1 = 500;
+unsigned char message="";
+unsigned long timeUnix;
+byte unix_buffer[4]; 
+
+int hours;
+int minutes;
+int delayTime = 1000;
+int brightness = 200; // 0-255
+uint16_t tempColor;   // Will be filled with random color
+uint16_t tempColorB;   // Will be filled with random color
+uint16_t tempColorR;   // Will be filled with random color
+uint16_t tempColorG;   // Will be filled with random color
+
+//const uint16_t colors[] = {
+//  matrix_ws2812b.Color(255, 0, 0), matrix_ws2812b.Color(0, 255, 0), matrix_ws2812b.Color(0, 0, 255)
+//};
 
 // Color definitions (not needed here)
 #define BLACK    0x0000
@@ -48,32 +64,28 @@ void setup() {
 //  rtc.adjust(DateTime(2018, 10, 28, 21, 49, 0));
   Serial.begin(9600);
   matrix_ws2812b.begin();
-  matrix_ws2812b.setBrightness(255);  // 0-255
+  matrix_ws2812b.setBrightness(brightness);  // 0-255
   matrix_ws2812b.clear();
    // Initialize all pixels to 'off'
   
   matrix_SK6812.begin();
-  matrix_SK6812.setBrightness(255);  // 0-255
+  matrix_SK6812.setBrightness(brightness);  // 0-255
   matrix_SK6812.clear();
    // Initialize all pixels to 'off'
 }
-
-int pass = 0;
-int d1 = 500;
-unsigned char message="";
-unsigned long timeUnix;
-byte unix_buffer[4]; 
-
-int hours;
-int minutes;
-int delayTime = 1000;
-
 
 uint16_t RGB_RANDOM(){
   int randR = randomHat();
   int randG = randomHat();
   int randB = randomHat();
   return matrix_ws2812b.Color(randR, randG, randB);
+  }
+  
+uint16_t RGB_RANDOM_SK6812(){
+  int randR = randomHat();
+  int randG = randomHat();
+  int randB = randomHat();
+  return matrix_SK6812.Color(randR, randG, randB);
   }
 
 uint16_t RGBW_RANDOM(){

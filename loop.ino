@@ -18,10 +18,13 @@ void timeLoop(){
     minutes = now.minute();
 //    timeUnix = now.unixtime();
 //    Serial.print(timeUnix);
-//    Serial.print(" - ");
-  
-    Minutes(minutes);
-    Hours(minutes, hours);
+    tempColor = RGB_RANDOM();
+    tempColorB = RGB_RANDOM();
+    tempColorR = RGB_RANDOM();
+    tempColorG = RGB_RANDOM();
+    Serial.println(tempColor, HEX);
+    Minutes(minutes, tempColor);
+    Hours(minutes, hours, tempColor);
     Serial.print(hours);
     Serial.print(":");
     Serial.println(minutes);

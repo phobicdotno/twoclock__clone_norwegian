@@ -1,4 +1,4 @@
-/* 255, 255, 255Hat
+/* tempColorHat
   Paul Badger 2007 - updated for Teensy compile 2017
   choose one from a hat of n consecutive choices each time through loop
   Choose each number exactly once before reseting and choosing again
