@@ -1,5 +1,5 @@
 /*
-// DEBUG: Serial output for current time
+  // DEBUG: Serial output for current time
     Serial.print(now.hour(), DEC);
     Serial.print(':');
     Serial.print(now.minute(), DEC);
@@ -8,7 +8,7 @@
     Serial.println();
 */
 /*
-// DEBUG: Loop fast through 12 hours cycle
+  // DEBUG: Loop fast through 12 hours cycle
     for (int j = 1 ; j < 13; j++){
      for (int i = 1 ; i < 60; i+=5){
        matrix.fillScreen(0);
@@ -31,142 +31,145 @@ void cycleTimeTest(int delayTime) {
   Serial.print(hours);
   Serial.print(":");
   Serial.println(minutes);
-  
-  for (int i=0; i<12; i++){
-    tempColor = RGB_RANDOM();
-    for (int j=0; j<12; j++){
+
+  for (int i = 0; i < 12; i++) {
+//    tempColorB = RGB_RANDOM();
+//    tempColorR = RGB_RANDOM();
+//    tempColorG = RGB_RANDOM();
+      RGB_RANDOM();
+    for (int j = 0; j < 12; j++) {
       cls();
-      Minutes(minutes, tempColor);
-      Hours(minutes, hours, tempColor);
+      Minutes(minutes, tempColorB, tempColorR, tempColorG);
+      Hours(minutes, hours, tempColorB, tempColorR, tempColorG);
       matrix_ws2812b.show();
       matrix_SK6812.show();
-      
+
       delay(delayTime);
       Serial.print(hours);
       Serial.print(":");
       Serial.println(minutes);
-      minutes+=5;
+      minutes += 5;
     }
     hours++;
     minutes = 0;
-    
+
   }
 }
-  
+
 
 
 void testText() {
-  phobic(tempColor);
+  phobic(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(2000);
   cls();
 
-  ett(tempColor);
+  ett(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();;
 
-  to(tempColor);
+  to(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();;
 
-  tre(tempColor);  // Mangler E
+  tre(tempColorB, tempColorR, tempColorG);  // Mangler E
   showBoth();
   delay(delayTime);
   cls();;
 
-  fire(tempColor);
+  fire(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  fem(tempColor);
+  fem(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  seks(tempColor);
+  seks(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  sju(tempColor);
+  sju(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  aatte(tempColor);
+  aatte(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  ni(tempColor);
+  ni(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  ti(tempColor);
+  ti(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  elleve(tempColor); // Mangler første E
+  elleve(tempColorB, tempColorR, tempColorG); // Mangler første E
   showBoth();
   delay(delayTime);
   cls();
 
-  tolv(tempColor);
+  tolv(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  fem_(tempColor);
+  fem_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  ti_(tempColor);
+  ti_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  kvart_(tempColor);
+  kvart_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  paa_(tempColor);
+  paa_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  over_(tempColor);
+  over_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  halv_(tempColor);
+  halv_(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot1(tempColor);
+  dot1(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot2(tempColor);
+  dot2(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot3(tempColor);
+  dot3(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();
 
-  dot4(tempColor);
+  dot4(tempColorB, tempColorR, tempColorG);
   showBoth();
   delay(delayTime);
   cls();

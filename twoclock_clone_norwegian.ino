@@ -38,7 +38,6 @@ int hours;
 int minutes;
 int delayTime = 1000;
 int brightness = 200; // 0-255
-uint16_t tempColor;   // Will be filled with random color
 uint16_t tempColorB;   // Will be filled with random color
 uint16_t tempColorR;   // Will be filled with random color
 uint16_t tempColorG;   // Will be filled with random color
@@ -74,24 +73,9 @@ void setup() {
    // Initialize all pixels to 'off'
 }
 
-uint16_t RGB_RANDOM(){
-  int randR = randomHat();
-  int randG = randomHat();
-  int randB = randomHat();
-  return matrix_ws2812b.Color(randR, randG, randB);
+void RGB_RANDOM(){
+  uint16_t tempColorR = randomHat();
+  uint16_t tempColorG = randomHat();
+  uint16_t tempColorB = randomHat();
   }
   
-uint16_t RGB_RANDOM_SK6812(){
-  int randR = randomHat();
-  int randG = randomHat();
-  int randB = randomHat();
-  return matrix_SK6812.Color(randR, randG, randB);
-  }
-
-uint16_t RGBW_RANDOM(){
-  int randR = randomHat();
-  int randG = randomHat();
-  int randB = randomHat();
-  int randW = 0;
-  return matrix_SK6812.Color(randR, randG, randB, randW);
-  }
